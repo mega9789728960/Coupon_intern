@@ -5,7 +5,14 @@ A Node.js/Express backend API for managing and recommending coupons based on use
 ## Live Demo
 
 The project is deployed on Vercel and accessible at:
-**https://coupon-intern.vercel.app/**
+
+**Base URL**: `https://coupon-intern.vercel.app/`
+
+### Deployed Endpoints
+
+- **Login**: `https://coupon-intern.vercel.app/login`
+- **Get Best Coupon**: `https://coupon-intern.vercel.app/bestcoupon`
+- **Create Coupon**: `https://coupon-intern.vercel.app/createcoupon`
 
 ## Features
 
@@ -102,7 +109,8 @@ npx nodemon server.js
 
 ### 1. Login (Demo)
 
-**Endpoint**: `POST /login`
+**Local Endpoint**: `POST http://localhost:3001/login`  
+**Deployed Endpoint**: `POST https://coupon-intern.vercel.app/login`
 
 **Description**: Demo login endpoint with predefined credentials.
 
@@ -133,7 +141,8 @@ npx nodemon server.js
 
 ### 2. Get Best Coupon
 
-**Endpoint**: `GET /bestcoupon`
+**Local Endpoint**: `GET http://localhost:3001/bestcoupon`  
+**Deployed Endpoint**: `GET https://coupon-intern.vercel.app/bestcoupon`
 
 **Description**: Recommends the best eligible coupon for a user's cart based on eligibility criteria and maximum discount value.
 
@@ -190,7 +199,8 @@ npx nodemon server.js
 
 ### 3. Create Coupon
 
-**Endpoint**: `POST /createcoupon`
+**Local Endpoint**: `POST http://localhost:3001/createcoupon`  
+**Deployed Endpoint**: `POST https://coupon-intern.vercel.app/createcoupon`
 
 **Description**: Creates a new coupon in the database.
 
@@ -235,29 +245,47 @@ project/
 
 ## Deployment on Vercel
 
+The project is already deployed on Vercel and is live in production.
+
+**Live URL**: https://coupon-intern.vercel.app/
+
+### Deployed API Endpoints
+
+All endpoints are available at the following URLs:
+
+| Endpoint | Method | URL |
+|----------|--------|-----|
+| Login | POST | https://coupon-intern.vercel.app/login |
+| Get Best Coupon | GET | https://coupon-intern.vercel.app/bestcoupon |
+| Create Coupon | POST | https://coupon-intern.vercel.app/createcoupon |
+
+### Deploy New Changes
+
 The project is already configured for Vercel deployment using `vercel.json`.
 
-### Deploy Steps
+To deploy new changes:
 
-1. Push your code to a Git repository (GitHub, GitLab, etc.)
-2. Connect your repository to Vercel at https://vercel.com
-3. Set environment variables in Vercel dashboard:
-   - `DB_USER`
-   - `DB_HOST`
-   - `DB_NAME`
-   - `DB_PASSWORD`
-   - `DB_PORT`
-4. Vercel will automatically deploy on every push to main branch
-
-### View Deployed Project
-
-Access the live deployment at: **https://coupon-intern.vercel.app/**
+1. Push your code to the main branch on GitHub
+2. Vercel will automatically detect the push and deploy automatically
+3. Check deployment status at https://vercel.com (if you have access)
 
 ## Testing the API
 
 Use any API testing tool (Postman, Insomnia, cURL, etc.) or VS Code's REST Client extension.
 
-### Example cURL Commands
+### Testing Endpoints
+
+You can test the **live deployed API** at:
+- https://coupon-intern.vercel.app/login
+- https://coupon-intern.vercel.app/bestcoupon
+- https://coupon-intern.vercel.app/createcoupon
+
+Or test **locally** when running `npm start`:
+- http://localhost:3001/login
+- http://localhost:3001/bestcoupon
+- http://localhost:3001/createcoupon
+
+### Example cURL Commands (Local)
 
 **Login**:
 ```bash
@@ -278,6 +306,17 @@ curl -X GET http://localhost:3001/bestcoupon \
 curl -X POST http://localhost:3001/createcoupon \
   -H "Content-Type: application/json" \
   -d '{"code":"SAVE10","discountType":"FLAT","maxDiscountAmount":500,"startDate":"2025-01-01T00:00:00Z","endDate":"2025-12-31T23:59:59Z","usageLimitPerUser":5,"allowedcountries":["IN"],"applicablecategories":["electronics"],"excludedcategories":[]}'
+```
+
+### Example cURL Commands (Deployed)
+
+Replace `http://localhost:3001` with `https://coupon-intern.vercel.app` in the commands above.
+
+**Login (Deployed)**:
+```bash
+curl -X POST https://coupon-intern.vercel.app/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"hire-me@anshumat.org","password":"HireMe@2025!"}'
 ```
 
 ## Important Security Notes
