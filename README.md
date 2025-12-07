@@ -337,10 +337,3 @@ curl -X POST https://coupon-intern.vercel.app/login \
 | CORS errors | CORS is enabled in `api/index.js`, check if origin is allowed |
 | Module not found errors | Run `npm install` to install dependencies |
 
-## License
-
-This project is open source and available under the MIT License.
-
-## Support
-
-For issues or questions, please create an issue in the repository or contact the development team.
