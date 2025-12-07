@@ -49,42 +49,13 @@ cd project
 npm install
 ```
 
-### 3. Configure Environment
+### 3. Environment Configuration
 
-The database configuration is currently hardcoded in `database/database.js`. For production use, update it to use environment variables:
+The `.env` file is provided in the repository with the database configuration. The database is pre-configured to connect to the existing PostgreSQL instance. No additional setup is required—just install dependencies and run.
 
-Create a `.env` file in the project root:
+### 4. Database
 
-```
-DB_USER=your_postgres_user
-DB_HOST=your_database_host
-DB_NAME=your_database_name
-DB_PASSWORD=your_database_password
-DB_PORT=5432
-```
-
-Then update `database/database.js` to read from environment variables:
-
-```javascript
-import pkg from 'pg';
-const { Pool } = pkg;
-
-const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
-  ssl: { rejectUnauthorized: false },
-  max: 10,
-});
-
-export default pool;
-```
-
-### 4. Set Up Database
-
-Ensure your PostgreSQL database has a `coupons` table with the following schema:
+The database is pre-configured and ready to use. If you need to set up a fresh database, ensure your PostgreSQL database has a `coupons` table with the following schema:
 
 ```sql
 CREATE TABLE coupons (
